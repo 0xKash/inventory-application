@@ -1,0 +1,15 @@
+<html>
+  <body>
+    <h1>Inventory:</h1>
+    <hr />
+    <% inventory.forEach(element => { %>
+    <div>
+      <h1><%= element.item_name %></h1>
+      <h2><%= element.item_category %></h2>
+      <h2><%= element.item_quality %></h2>
+      <p>x<%= element.item_quantity %></p>
+    </div>
+    <hr />
+    <% }); %>
+  </body>
+</html>
