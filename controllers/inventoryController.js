@@ -5,3 +5,11 @@ exports.showInventory = async (req, res) => {
 
   res.render("index", { inventory: inventory });
 };
+
+exports.createItemGet = (req, res) => res.render("createItem");
+exports.createItemPost = async (req, res) => {
+  const { name, category, quality } = req.body;
+
+  await db.createItem(name, category, quality);
+  res.redirect("/");
+};

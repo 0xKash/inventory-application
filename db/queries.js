@@ -6,4 +6,11 @@ async function getInventory() {
   return rows;
 }
 
-module.exports = { getInventory };
+async function createItem(name, category, quality) {
+  await pool.query(
+    "INSERT INTO inventory (item_name, item_category, item_quality) VALUES($1, $2, $3)",
+    [name, category, quality]
+  );
+}
+
+module.exports = { getInventory, createItem };

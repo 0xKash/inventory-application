@@ -5,8 +5,7 @@ CREATE TABLE IF NOT EXISTS inventory (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     item_name VARCHAR ( 255 ),
     item_category VARCHAR ( 255 ),
-    item_quality VARCHAR ( 255 ),
-    item_quantity INTEGER
+    item_quality VARCHAR ( 255 )
 );
 `;
 
