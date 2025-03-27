@@ -15,7 +15,7 @@
         <option value="Tactical Shooter">Tactical Shooter</option>
       </select>
       <label for="developer">
-        <select name="developer" id="developer">
+        <select name="developer" id="developer" required>
           <option value="Paradox">Paradox</option>
           <option value="EA">EA</option>
           <option value="Rockstar">Rockstar</option>
@@ -23,6 +23,8 @@
           <option value="Riot">Riot</option>
         </select>
       </label>
+      <label for="quantity">Quantity: </label>
+      <input type="number" name="quantity" id="quantity" required />
       <button type="submit">Submit</button>
     </form>
   </body>

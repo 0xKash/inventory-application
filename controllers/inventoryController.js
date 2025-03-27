@@ -8,8 +8,14 @@ exports.showInventory = async (req, res) => {
 
 exports.createGameGet = (req, res) => res.render("createItem");
 exports.createGamePost = async (req, res) => {
-  const { name, genre, developer } = req.body;
+  const { name, genre, developer, quantity } = req.body;
+  const dupGame = await db.checkDuplicate(name, genre, developer);
 
-  await db.createGame(name, genre, developer);
-  res.redirect("/");
+  if (typeof dupGame[0] === "undefined") {
+    await db.createGame(name, genre, developer, quantity);
+    res.redirect("/");
+  } else {
+    await db.increaseQuantity(quantity, dupGame[0].id);
+    res.redirect("/");
+  }
 };
