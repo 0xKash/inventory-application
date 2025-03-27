@@ -1,23 +1,23 @@
 const db = require("../db/queries");
 
 exports.showInventory = async (req, res) => {
-  const categories = await db.getCategories();
+  const genres = await db.getGenres();
   const developers = await db.getDevelopers();
   const inventory = await db.getInventory();
 
   res.render("index", {
     inventory: inventory,
-    categories: categories,
+    genres: genres,
     developers: developers,
   });
 };
 
-exports.createCategoryGet = async (req, res) => {
-  res.render("createCategory");
+exports.createGenreGet = async (req, res) => {
+  res.render("createGenre");
 };
 
-exports.createCategoryPost = async (req, res) => {
-  await db.createCategory(req.body.category);
+exports.createGenrePost = async (req, res) => {
+  await db.createGenre(req.body.genre);
   res.redirect("/");
 };
 
@@ -31,18 +31,16 @@ exports.createDeveloperPost = async (req, res) => {
 };
 
 exports.createGameGet = async (req, res) => {
-  const categories = await db.getCategories();
+  const genres = await db.getGenres();
   const developers = await db.getDevelopers();
-  res.render("createItem", { categories: categories, developers: developers });
+  res.render("createGame", { genres: genres, developers: developers });
 };
 
 exports.createGamePost = async (req, res) => {
-  const { name, genre, developer, quantity } = req.body;
+  const { name, genre, developer } = req.body;
   const dupGame = await db.checkDuplicate(name, genre, developer);
 
-  dupGame.length === 0
-    ? await db.createGame(name, genre, developer, quantity)
-    : await db.increaseQuantity(quantity, dupGame[0].id);
+  dupGame.length === 0 && (await db.createGame(name, genre, developer));
 
   res.redirect("/");
 };

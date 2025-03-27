@@ -2,16 +2,16 @@
   <body>
     <h1>Inventory:</h1>
     <form action="/" method="post">
-      <h2>Categories:</h2>
-      <% categories.forEach(element => { %>
+      <h2>Genres:</h2>
+      <% genres.forEach(element => { %>
       <input
         type="checkbox"
-        id="<%= element.category %>"
-        name="<%= element.category %>"
-        value="<%= element.category %>"
+        id="<%= element.genre %>"
+        name="<%= element.genre %>"
+        value="<%= element.genre %>"
         checked
       />
-      <label for="<%= element.category %>"><%= element.category %></label>
+      <label for="<%= element.genre %>"><%= element.genre %></label>
       <% }) %>
       <h2>Developers:</h2>
       <% developers.forEach(element => { %>
@@ -26,9 +26,9 @@
       <% }) %>
     </form>
 
-    <a href="/createItem"><span>Create item</span></a>
+    <a href="/createGame"><span>Create game</span></a>
     <span>//<span>
-    <a href="/createCategory"><span>Create category</span></a>
+    <a href="/createGenre"><span>Create genre</span></a>
     <span>//<span>
     <a href="/createDeveloper"><span>Create developer</span></a>
     <hr />
@@ -37,7 +37,6 @@
       <h1><%= element.game_name %></h1>
       <h2>Genre: <%= element.game_genre %></h2>
       <h2>Developer: <%= element.game_developer %></h2>
-      <p>Quantity: x<%= element.game_quantity %></p>
       <button>Remove Item</button>
     </div>
     <hr />

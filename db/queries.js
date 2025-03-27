@@ -1,9 +1,7 @@
 const pool = require("./pool");
 
-async function getCategories() {
-  const { rows } = await pool.query(
-    "SELECT * FROM categories ORDER BY category"
-  );
+async function getGenres() {
+  const { rows } = await pool.query("SELECT * FROM genres ORDER BY genre");
 
   return rows;
 }
@@ -18,14 +16,14 @@ async function getDevelopers() {
 
 async function getInventory() {
   const { rows } = await pool.query(
-    "SELECT * FROM inventory ORDER BY game_quantity DESC"
+    "SELECT * FROM inventory ORDER BY game_name"
   );
 
   return rows;
 }
 
-async function createCategory(category) {
-  await pool.query("INSERT INTO categories (category) VALUES ($1)", [category]);
+async function createGenre(genre) {
+  await pool.query("INSERT INTO genres (genre) VALUES ($1)", [genre]);
 }
 
 async function createDeveloper(developer) {
@@ -34,10 +32,10 @@ async function createDeveloper(developer) {
   ]);
 }
 
-async function createGame(name, genre, developer, quantity) {
+async function createGame(name, genre, developer) {
   await pool.query(
-    "INSERT INTO inventory (game_name, game_genre, game_developer, game_quantity) VALUES($1, $2, $3, $4)",
-    [name, genre, developer, quantity]
+    "INSERT INTO inventory (game_name, game_genre, game_developer) VALUES($1, $2, $3)",
+    [name, genre, developer]
   );
 }
 
@@ -50,20 +48,12 @@ async function checkDuplicate(name, genre, developer) {
   return rows;
 }
 
-async function increaseQuantity(quantity, id) {
-  await pool.query(
-    `UPDATE inventory SET game_quantity = game_quantity + $1 WHERE id = $2`,
-    [quantity, id]
-  );
-}
-
 module.exports = {
-  getCategories,
+  getGenres,
   getDevelopers,
   getInventory,
-  createCategory,
+  createGenre,
   createDeveloper,
   createGame,
   checkDuplicate,
-  increaseQuantity,
 };

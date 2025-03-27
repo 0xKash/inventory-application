@@ -1,0 +1,27 @@
+<html>
+  <body>
+    <h1>Create Game</h1>
+
+    <hr />
+    <form action="/createGame" method="post">
+      <label for="name">Game Name:</label>
+      <input type="text" name="name" id="name" required />
+      <label for="genre">Game Genre: </label>
+      <select name="genre" id="genre">
+        <% genres.forEach(element => { %>
+        <option value="<%= element.genre %>"><%= element.genre %></option>
+        <% }) %>
+      </select>
+      <label for="developer"> Game developer: </label>
+      <select name="developer" id="developer" required>
+        <% developers.forEach(element => { %>
+        <option value="<%= element.developer %>">
+          <%= element.developer %>
+        </option>
+        <% }) %>
+      </select>
+
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>

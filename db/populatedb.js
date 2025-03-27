@@ -5,15 +5,14 @@ CREATE TABLE IF NOT EXISTS inventory (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     game_name VARCHAR ( 255 ),
     game_genre VARCHAR ( 255 ),
-    game_developer VARCHAR ( 255 ),
-    game_quantity INTEGER
+    game_developer VARCHAR ( 255 )
 );
 `;
 
 const SQL2 = `
-  CREATE TABLE IF NOT EXISTS categories (
+  CREATE TABLE IF NOT EXISTS genres (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    category VARCHAR ( 255 )
+    genre VARCHAR ( 255 )
   );
 `;
 
