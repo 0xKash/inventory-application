@@ -6,11 +6,15 @@ async function getInventory() {
   return rows;
 }
 
-async function createItem(name, category, quality) {
+async function createGame(name, genre, developer) {
   await pool.query(
-    "INSERT INTO inventory (item_name, item_category, item_quality) VALUES($1, $2, $3)",
-    [name, category, quality]
+    "INSERT INTO inventory (game_name, game_genre, game_developer) VALUES($1, $2, $3)",
+    [name, genre, developer]
   );
 }
 
-module.exports = { getInventory, createItem };
+async function checkDuplicate(reqBody) {
+  await pool.query();
+}
+
+module.exports = { getInventory, createGame };

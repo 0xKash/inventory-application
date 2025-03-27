@@ -6,10 +6,10 @@ exports.showInventory = async (req, res) => {
   res.render("index", { inventory: inventory });
 };
 
-exports.createItemGet = (req, res) => res.render("createItem");
-exports.createItemPost = async (req, res) => {
-  const { name, category, quality } = req.body;
+exports.createGameGet = (req, res) => res.render("createItem");
+exports.createGamePost = async (req, res) => {
+  const { name, genre, developer } = req.body;
 
-  await db.createItem(name, category, quality);
+  await db.createGame(name, genre, developer);
   res.redirect("/");
 };

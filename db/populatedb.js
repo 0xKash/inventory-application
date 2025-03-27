@@ -3,9 +3,9 @@ const { Client } = require("pg");
 const SQL = `
 CREATE TABLE IF NOT EXISTS inventory (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    item_name VARCHAR ( 255 ),
-    item_category VARCHAR ( 255 ),
-    item_quality VARCHAR ( 255 )
+    game_name VARCHAR ( 255 ),
+    game_genre VARCHAR ( 255 ),
+    game_developer VARCHAR ( 255 )
 );
 `;
 

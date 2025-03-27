@@ -4,23 +4,23 @@
 
     <hr />
     <form action="/create" method="post">
-      <label for="name">Item Name:</label>
+      <label for="name">Game Name:</label>
       <input type="text" name="name" id="name" required />
-      <label for="category">Item Category: </label>
-      <select name="category" id="category">
-        <option value="Weapon">Weapon</option>
-        <option value="Healing">Healing</option>
-        <option value="Utility">Utility</option>
-        <option value="Armour">Armour</option>
-        <option value="Mobility">Mobility</option>
+      <label for="genre">Game Genre: </label>
+      <select name="genre" id="genre">
+        <option value="Action">Action</option>
+        <option value="Adventure">Adventure</option>
+        <option value="Strategy">Strategy</option>
+        <option value="RPG">RPG</option>
+        <option value="Tactical Shooter">Tactical Shooter</option>
       </select>
-      <label for="quality">
-        <select name="quality" id="quality">
-          <option value="Common">Common</option>
-          <option value="Uncommon">Uncommon</option>
-          <option value="Rare">Rare</option>
-          <option value="Epic">Epic</option>
-          <option value="Legendary">Legendary</option>
+      <label for="developer">
+        <select name="developer" id="developer">
+          <option value="Paradox">Paradox</option>
+          <option value="EA">EA</option>
+          <option value="Rockstar">Rockstar</option>
+          <option value="Epic Games">Epic Games</option>
+          <option value="Riot">Riot</option>
         </select>
       </label>
       <button type="submit">Submit</button>
