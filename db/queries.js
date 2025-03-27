@@ -1,9 +1,37 @@
 const pool = require("./pool");
 
-async function getInventory() {
-  const { rows } = await pool.query("SELECT * FROM inventory ORDER BY id");
+async function getCategories() {
+  const { rows } = await pool.query(
+    "SELECT * FROM categories ORDER BY category"
+  );
 
   return rows;
+}
+
+async function getDevelopers() {
+  const { rows } = await pool.query(
+    "SELECT * FROM developers ORDER BY developer"
+  );
+
+  return rows;
+}
+
+async function getInventory() {
+  const { rows } = await pool.query(
+    "SELECT * FROM inventory ORDER BY game_quantity DESC"
+  );
+
+  return rows;
+}
+
+async function createCategory(category) {
+  await pool.query("INSERT INTO categories (category) VALUES ($1)", [category]);
+}
+
+async function createDeveloper(developer) {
+  await pool.query("INSERT INTO developers (developer) VALUES ($1)", [
+    developer,
+  ]);
 }
 
 async function createGame(name, genre, developer, quantity) {
@@ -29,4 +57,13 @@ async function increaseQuantity(quantity, id) {
   );
 }
 
-module.exports = { getInventory, createGame, checkDuplicate, increaseQuantity };
+module.exports = {
+  getCategories,
+  getDevelopers,
+  getInventory,
+  createCategory,
+  createDeveloper,
+  createGame,
+  checkDuplicate,
+  increaseQuantity,
+};

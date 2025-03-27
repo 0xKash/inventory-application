@@ -3,24 +3,22 @@
     <h1>Create Item</h1>
 
     <hr />
-    <form action="/create" method="post">
+    <form action="/createItem" method="post">
       <label for="name">Game Name:</label>
       <input type="text" name="name" id="name" required />
       <label for="genre">Game Genre: </label>
       <select name="genre" id="genre">
-        <option value="Action">Action</option>
-        <option value="Adventure">Adventure</option>
-        <option value="Strategy">Strategy</option>
-        <option value="RPG">RPG</option>
-        <option value="Tactical Shooter">Tactical Shooter</option>
+        <% categories.forEach(element => { %>
+        <option value="<%= element.category %>"><%= element.category %></option>
+        <% }) %>
       </select>
       <label for="developer">
         <select name="developer" id="developer" required>
-          <option value="Paradox">Paradox</option>
-          <option value="EA">EA</option>
-          <option value="Rockstar">Rockstar</option>
-          <option value="Epic Games">Epic Games</option>
-          <option value="Riot">Riot</option>
+          <% developers.forEach(element => { %>
+          <option value="<%= element.developer %>">
+            <%= element.developer %>
+          </option>
+          <% }) %>
         </select>
       </label>
       <label for="quantity">Quantity: </label>

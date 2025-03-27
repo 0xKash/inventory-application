@@ -5,11 +5,21 @@ const {
   showInventory,
   createGameGet,
   createGamePost,
+  createCategoryGet,
+  createCategoryPost,
+  createDeveloperGet,
+  createDeveloperPost,
 } = require("../controllers/inventoryController");
 
 indexRouter.get("/", showInventory);
 
-indexRouter.get("/create", createGameGet);
-indexRouter.post("/create", createGamePost);
+indexRouter.get("/createItem", createGameGet);
+indexRouter.post("/createItem", createGamePost);
+
+indexRouter.get("/createCategory", createCategoryGet);
+indexRouter.post("/createCategory", createCategoryPost);
+
+indexRouter.get("/createDeveloper", createDeveloperGet);
+indexRouter.post("/createDeveloper", createDeveloperPost);
 
 module.exports = indexRouter;

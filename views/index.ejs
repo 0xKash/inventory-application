@@ -1,7 +1,36 @@
 <html>
   <body>
     <h1>Inventory:</h1>
-    <a href="/create"><span>Create item</span></a>
+    <form action="/" method="post">
+      <h2>Categories:</h2>
+      <% categories.forEach(element => { %>
+      <input
+        type="checkbox"
+        id="<%= element.category %>"
+        name="<%= element.category %>"
+        value="<%= element.category %>"
+        checked
+      />
+      <label for="<%= element.category %>"><%= element.category %></label>
+      <% }) %>
+      <h2>Developers:</h2>
+      <% developers.forEach(element => { %>
+      <input
+        type="checkbox"
+        id="<%= element.developer %>"
+        name="<%= element.developer %>"
+        value="<%= element.developer %>"
+        checked
+      />
+      <label for="<%= element.developer %>"><%= element.developer %></label>
+      <% }) %>
+    </form>
+
+    <a href="/createItem"><span>Create item</span></a>
+    <span>//<span>
+    <a href="/createCategory"><span>Create category</span></a>
+    <span>//<span>
+    <a href="/createDeveloper"><span>Create developer</span></a>
     <hr />
     <% inventory.forEach(element => { %>
     <div>
