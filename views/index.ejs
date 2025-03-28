@@ -25,12 +25,18 @@
       <label for="<%= element.developer %>"><%= element.developer %></label>
       <% }) %>
     </form>
-
+  
     <a href="/createGame"><span>Create game</span></a>
     <span>//<span>
     <a href="/createGenre"><span>Create genre</span></a>
     <span>//<span>
     <a href="/createDeveloper"><span>Create developer</span></a>
+    <hr />
+    <form action="/" method="post">
+      <label for="search">Search Game: </label>
+      <input type="text" name="search" id="search">
+      <button type="submit">Submit</button>
+    </form>
     <hr />
     <% inventory.forEach(element => { %>
     <div>

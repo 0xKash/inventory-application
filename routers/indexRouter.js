@@ -9,9 +9,11 @@ const {
   createGenrePost,
   createDeveloperGet,
   createDeveloperPost,
+  searchGames,
 } = require("../controllers/inventoryController");
 
 indexRouter.get("/", showInventory);
+indexRouter.post("/", searchGames);
 
 indexRouter.get("/createGame", createGameGet);
 indexRouter.post("/createGame", createGamePost);

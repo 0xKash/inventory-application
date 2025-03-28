@@ -22,6 +22,15 @@ async function getInventory() {
   return rows;
 }
 
+async function searchGames(search) {
+  const { rows } = await pool.query(
+    "SELECT * FROM inventory WHERE LOWER(game_name) LIKE LOWER($1)",
+    [`${search}%`]
+  );
+
+  return rows;
+}
+
 async function createGenre(genre) {
   await pool.query("INSERT INTO genres (genre) VALUES ($1)", [genre]);
 }
@@ -52,6 +61,7 @@ module.exports = {
   getGenres,
   getDevelopers,
   getInventory,
+  searchGames,
   createGenre,
   createDeveloper,
   createGame,

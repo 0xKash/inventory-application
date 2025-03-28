@@ -12,6 +12,18 @@ exports.showInventory = async (req, res) => {
   });
 };
 
+exports.searchGames = async (req, res) => {
+  const genres = await db.getGenres();
+  const developers = await db.getDevelopers();
+  const inventory = await db.searchGames(req.body.search);
+
+  res.render("index", {
+    inventory: inventory,
+    genres: genres,
+    developers: developers,
+  });
+};
+
 exports.createGenreGet = async (req, res) => {
   res.render("createGenre");
 };
